@@ -8,14 +8,27 @@ maps marathon app id to vhost:
 
 `api.somedomain.com` => `api--somedomain--com`
 
-
 `docker run acker/mesosphere-router`
 
 
+### Install into Marathon
 
-### Container
-	
+`curl -X POST -HContent-Type:application/json http://$marathon:8080/v2/apps -d @marathon.json`
 
+Check running status on router in marathon UI. Either use a reverse
+proxy in front of your installed router or capture the IP of the slave
+where the router landed.
+
+### Testing
+
+install a route-able app, eg. 
+
+`curl -X POST -HContent-Type:application/json http://$marathon:8080/v2/apps -d @foobar--com.json`
+
+once it's running, `curl -HHost:foobar.com $IP_ROUTER`
+
+
+### Container Details
 
 terminates ssl, default image contains dummy certs for *.mesosphere.com
 

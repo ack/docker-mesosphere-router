@@ -1,0 +1,21 @@
+{
+  "id": "/foobar--com",
+  "cpus": 0.25,
+  "mem": 64,
+  "cmd": "python3 -m http.server 8080",
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:3",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "portMappings": [
+          {
+              "containerPort": 8080,
+              "protocol": "tcp"
+          }
+      ]
+    }
+  }
+}
