@@ -26,8 +26,9 @@ else
    backends = cjson.decode(resp.body)
    backend = backends[math.random(#backends)]
    if backend['ip'] == "" then
+      ngx.status = ngx.HTTP_NOT_FOUND
       ngx.say("[ERROR] nothing resolved for " .. host)
-      ngx.exit(ngx.HTTP_OK)
+      ngx.exit(ngx.HTTP_NOT_FOUND)
    end
    ngx.var.target = "http://" .. backend['ip'] .. ":"  .. backend['port']
 end
