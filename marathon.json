@@ -1,14 +1,14 @@
 {
   "id": "/router",
-  "cpus": 1,
-  "mem": 256,
+  "cpus": 0.25,
+  "mem": 128,
   "instances": 1,
   "constraints": [["hostname", "UNIQUE"]],
-  "acceptedResourceRoles": ["slave_public"],
+  "cmd": "/usr/local/bin/nginx",
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "acker/mesosphere-router",
+      "image": "acker/mesosphere-router:latest",
       "forcePullImage": true,
       "network": "BRIDGE",
       "portMappings": [
